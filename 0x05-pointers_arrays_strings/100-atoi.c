@@ -1,4 +1,3 @@
-Advanced task 1
 #include "main.h"
 
 /**
