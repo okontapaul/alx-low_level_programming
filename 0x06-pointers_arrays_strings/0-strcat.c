@@ -9,7 +9,7 @@
 
 char *_strcat(char *dest, char *src)
 {
-nsigned int x = 0;
+unsigned int x = 0;
 unsigned int y = 0;
 
 while (*(dest + x) != '\0')
