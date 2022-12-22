@@ -1,30 +1,50 @@
 #include "main.h"
 
 /**
- * rot13 - a function that encodes a string using rot13
+ * print_number - a function that prints and integer.
  * Return: Always 0.
- * @s: string
+ * @n: number
  */
-char *rot13(char *s)
+void print_number(int n)
 {
-	char half1[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+	unsigned int size = n;
 
-	char half2[] = "nNoOpPqQrRsStTuUvVwWxXyYzZaAbBcCdDeEfFgGhHiIjJkKlLmM";
+	int num = 0;
 
-	int x = 0, y;
+	int x;
 
-	while (s[x] != 0)
+	if (n < 0)
+		size = -n;
+	if (n == 0)
+		num = 1;
+
+	while (size >= 1)
 	{
-		char z = s[x];
-
-		for (y = 0; y < 52; y++)
-		{
-			if (z == half1[y])
-			{
-				s[x] = half2[y];
-			}
-		}
-		x++;
+		size = size / 10;
+		num++;
 	}
-	return (s);
+
+	for (x = 0; x < num; x++)
+	{
+
+		int pow = 1;
+
+		int y;
+
+		int d;
+
+		for (y = 0; y < num - x - 1; y++)
+		{
+			pow = pow * 10;
+		}
+
+		d = ((n / pow) % 10);
+		if (n < 0)
+		{
+			d = -d;
+			if (x == 0)
+				_putchar(45);
+		}
+		_putchar(48 + d);
+	}
 }
