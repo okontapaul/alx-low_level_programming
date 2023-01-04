@@ -1,22 +1,37 @@
 #include "main.h"
 
 /**
- * print_chessboard - prints the chessboard
- * @a: input pointer.
- * Return: no return.
+ * is_prime_number - a function that returns 1 if the input integer is a
+ * prime number, otherwise return 0.
+ * @n: enter a number.
+ * Return: Always 0.
  */
-void print_chessboard(char (*a)[8])
-{
-	unsigned int i, m = 0;
 
-	for (i = 0; i < 64; i++)
+int is_prime_number(int n)
+{
+	if (n <= 1)
 	{
-		if (i % 8 == 0 && i != 0)
-		{
-			m = i;
-			_putchar('\n');
-		}
-		_putchar(a[i / 8][i - m]);
+		return (0);
 	}
-	_putchar('\n');
+	return (getNumPrim(n, 2));
+}
+
+/**
+ * getNumPrim - function that gets if num is 0 or 1
+ * @num: enter a number
+ * @i: Counter variable
+ * Return: int
+ */
+
+int getNumPrim(int num, int i)
+{
+	if (num == i)
+	{
+		return (1);
+	}
+	if (num % i == 0)
+	{
+		return (0);
+	}
+	return (getNumPrim(num, i + 1));
 }
