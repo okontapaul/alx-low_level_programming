@@ -9,7 +9,6 @@
  * @c: char to initialize.
  * Return: EXIT_SUCCESS.
  */
-
 char *create_array(unsigned int size, char c)
 {
 	char *ar;
