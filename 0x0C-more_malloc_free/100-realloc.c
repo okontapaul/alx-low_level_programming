@@ -39,4 +39,14 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	{
 		char *ppt;
 
-		ppt = ((char *…
+		ppt = ((char *)ptr);
+		free(ppt + new_size);
+	}
+	pt = malloc(max_size);
+	if (pt == NULL)
+		return (NULL);
+	for (x = 0; x < min_size; x++)
+		((char *)pt)[x] = ((char *)ptr)[x];
+	free(ptr);
+	return (pt);
+}
