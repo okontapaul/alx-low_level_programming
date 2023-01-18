@@ -14,7 +14,7 @@ int (*get_op_func(char *s))(int, int)
 
 	ptr_fun = *s == '+' ? op_add :
 		*s == '-' ? op_sub :
-		s == '' ? op_mul :
+		*s == '*' ? op_mul :
 		*s == '/' ? op_div :
 		*s == '%' ? op_mod : NULL;
 	if (!ptr_fun)
