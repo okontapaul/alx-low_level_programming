@@ -40,7 +40,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	}
 	a1 = atoi(argv[1]);
 	b2 = atoi(argv[3]);
-.	oper.op = argv[2];
+	oper.op = argv[2];
 	oper.f = get_op_func(argv[2]);
 	printf("%d\n", oper.f(a1, b2));
 	return (0);
