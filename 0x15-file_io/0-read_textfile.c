@@ -1,51 +1,36 @@
 #include "main.h"
 
 /**
- * read_textfile - a function that reads a text and print it to the
- * POSIX standard output.
- * @filename: path to file.
- * @letters: chars to read.
- * Return: actual number of letters it could read and print.
+ * read_textfile - reads a text file and prints the letters
+ * @filename: filename.
+ * @letters: numbers of letters printed.
+ *
+ * Return: numbers of letters printed. It fails, returns 0.
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int tp;
-	char *buff;
-	ssize_t bytes, rt;
+	int fd;
+	ssize_t nrd, nwr;
+	char *buf;
 
 	if (!filename)
 		return (0);
-	tp = open(filename, O_RDONLY);
-	if (tp == -1)
-	{
-		close(tp);
+
+	fd = open(filename, O_RDONLY);
+
+	if (fd == -1)
 		return (0);
-	}
 
-	buff = malloc(sizeof(char) * letters);
-	if (!buff)
-	{
-		close(tp);
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
 		return (0);
-	}
 
-	bytes = read(tp, buff, letters);
+	nrd = read(fd, buf, letters);
+	nwr = write(STDOUT_FILENO, buf, nrd);
 
-	if (bytes == -1)
-	{
-		close(tp);
-		free(buff);
-		return (0);
-	}
+	close(fd);
 
-	rt = write(STDOUT_FILENO, buff, bytes);
+	free(buf);
 
-	if (rt == -1)
-	{
-		close(tp);
-		free(buff);
-		return (0);
-	}
-	close(tp);
-	return (bytes);
+	return (nwr);
 }
