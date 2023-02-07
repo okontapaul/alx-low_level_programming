@@ -21,7 +21,7 @@ void print_addr(char *ptr)
 
 	sys = ptr[4] + '0';
 	if (sys == '1')
-	{
+{
 		begin = 26;
 		printf("80");
 		for (i = begin; i >= 22; i--)
